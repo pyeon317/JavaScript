@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /* 변수선언 */
+        var num1 = 1;
+        var num2 = '10';
+        var num3 = "10";
+
+
+        /* 변수의 값 변경 */
+        num1 = 3.14;
+        num2 = 10;
+        num3 = '홍길동';
+
+        var result = num1 + num2;//13.14
+        console.log(result);
+        console.log(num3);
+
+        console.log(result + '10');//문자에 붙으면 문자가 됩니다.
+
+        console.log('--------------')
+        // boolean타입은 1 or 0으로도 실제 표현됨 */
+        var bool1 = true; //1 은 true로 판별
+        var bool2 = false; //0은 false로 판별
+
+        // undefined은 초기값을 지정하지 않을 때 나타납니다. */
+        var un;
+        console.log(un);
+
+        //null은 초기값은 들어갔지만 없는 경우에 나타납니다.
+        var tag = document.getElementById("xxx");
+        console.log(tag);
+
+        //typy of 변수명
+        console.log(typeof num1);
+        console.log(typeof num2);
+        console.log(typeof bool1);
+        console.log(typeof un);
+        console.log(typeof tag);
+    </script>
+
+    <script>
+        //출력문
+        //alert('안녕하세요');
+        //confirm('확인창'); //yes를 누르면 true반환, no를 누르면 false반환
+        //console.log(result);
+
+        document.write("hello");//브라우저로 출력(안씀)
+    </script>
+
+
+</body>
+
+</html>
