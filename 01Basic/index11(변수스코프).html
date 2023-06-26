@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var num = 10;
+
+        if(true){
+            var num = 20;
+        }
+
+        console.log(num);//if문 안에서 선언한 변수도 전역변수 취급
+
+        var a =10;
+        function func1(){
+            var a = 50;//함수 안에서만 쓸 수 있는 지역변수
+            console.log(a);
+        }
+        func1();
+        console.log(func1);
+        console.log(a);//var 변수는 함수 안에서 만드는 변수가 지역변수
+
+        for( var i = 1; i <= 10; i++){
+
+        }
+        console.log(i);//11 > i가 var변수이기 때문에 자동으로 for문에 의해 11까지 증가하게 됨
+
+        console.log('--------------------------------')
+
+        //let변수 es6 => 변수의 범위는 중괄호
+
+        let b = 10;
+        if(true){
+            let b = 20;
+        }
+        console.log('b=',b);
+
+        let c = 10;
+        function func2(){
+            let c = 20;
+            /* let c = 50; */
+        }
+        func2();
+        console.log('c=',c);
+
+    </script>
+</body>
+</html>

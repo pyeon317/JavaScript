@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        //func(); - 여기서는 실행안됨. 호이스팅x
+        var func = function () {
+            console.log('익명 함수 호출');
+        }
+
+        func();
+
+        var func2 = function (a, b) {
+            return a + b;
+        }
+
+        console.log(func2(10, 20));//30
+
+        console.log('--------------------------------')
+
+        //다음 함수와 동일한 실행결과를 보이는 익명함수를 만드세요(호출하기 전에 선언)
+
+        //매개변수 1개 받아서 짝 홀수 판별
+        //method(10);
+
+        //매개변수 4개를 받아서 평균을 정수로 리턴
+        //console.log(point('홍길동', 88,90,90));
+
+
+
+        //방법1
+        var func3 = function (a) {
+            console.log('매개변수:', a);
+            if(a%2 === 0) {
+                return '짝수';
+            }else{
+                return '홀수';
+            }
+        }
+        console.log(func3(10));
+        //방법2
+        var func3 = function (a) {
+            console.log('매개변수:', a);
+            if(a%2 === 0) {
+                console.log('짝수');
+            }else{
+                console.log('홀수');
+            }
+        }
+        func3(10);
+
+        
+        var func4 = function(a,b,c,d){
+            console.log('매개변수:', a, b, c, d);
+            return a + '님의 평균은:' + parseInt((b+c+d)/3);
+        }
+        console.log(func4('홍길동', 88,90,90));
+    </script>
+
+</body>
+
+</html>

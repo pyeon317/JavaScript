@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        이름(); //호이스팅 - 선언적 함수에서만 가능
+        var result = func(1,2);
+        function 이름() {
+            console.log('함수호출');
+        }
+
+        function func(a,b){
+            return a + b;//리턴이 필요하면 적으면 됩니다.
+        }
+
+        //함수를 변수에 저장할 수 있습니다.
+        var a = func;
+        
+        var result = a(1,2);
+        console.log(result);
+    </script>
+</body>
+</html>

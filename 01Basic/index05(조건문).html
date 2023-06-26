@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var num = 10;
+        if(num == 10){
+            console.log(true)
+        }else{
+            console.log(false);
+        }
+
+        //형변환 parseInt, parseFloat
+        var a = parseInt(Math.random()*100);
+        console.log(a)
+
+        var grade = 'F';
+        
+        if(a>=70){
+            grade = 'A';
+        }else if(a >= 60){
+            grade = 'B';
+        }else {
+            grade = 'C'
+        }
+
+        console.log('점수:',a,'등급:',grade)
+
+        console.log('--------------------------------');
+
+        switch (grade) {
+            case 'A':
+            console.log('A학점')
+                break;
+        
+            case 'B':
+            console.log('B학점')
+                break;
+        
+            case 'C':
+            console.log('C학점')
+                break;
+        
+            default:
+                console.log('F')
+                break;
+        }
+    </script>
+</body>
+</html>

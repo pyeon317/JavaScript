@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures -->
+
+    <script>
+        //렉시컬 스코프 - 함수의 선언위치에 따라서 사용하는 변수가 달라진다.
+
+        /*
+        1st
+
+        var a = 1;
+        function func1() {
+            a = 10;
+            console.log(a); //10
+        }
+        func1();
+        */
+
+        /*
+        2nd
+
+        var b = 1;//전역변수
+        function func2(){
+            var b = 10;
+            func3();
+        }
+
+        function func3(){
+            console.log(b);// b = 1
+        }
+        func2();  
+        */
+
+        /*
+        //3rd
+
+        var c = 1;
+        function func4(){
+            var c = 10;
+            func5();
+            function func5(){
+                console.log('c=',c); //10
+            }
+        }
+
+        func4();
+
+        */
+
+        //클로저 - 내부 함수의 렉시컬 스코프를 이용해서 외부에서 변수 a를 접근할 수 있는 환경을 만들어준다.
+        function example(){
+
+            var a = 1;
+/* 
+            var x = function (){
+                return a;
+            }
+
+            return x; */
+            return function (){
+                return a;
+            }
+        }//a의 수명은 여기서 끝
+
+        var result = example();//example() 반환은 함수
+        console.log(result); //함수 자체를 리턴할 수도 있다.
+
+        var result2 = result();
+        console.log(result2);//a값
+
+
+        console.log('-------------------------------------------------');
+
+        //var count = 0;
+        //++count;
+        //count = '홍길동';//에러발생
+        //++count;
+        //console.log(count);
+
+        //var compute = function(){
+        //    var count = 0;
+        //    return ++count;
+        //}
+        
+        //console.log(compute());//1
+        //console.log(compute());//1
+        //console.log(compute());//1
+        //console.log(compute());//1
+        
+
+        var compute = function(){
+            var count = 0;
+            return function(){
+                return ++count;
+            }
+        }
+        var x = compute();
+
+        console.log(x());//1
+        console.log(x());//2
+        console.log(x());//3
+        console.log(x());//4
+
+
+
+
+    </script>
+
+</body>
+
+</html>

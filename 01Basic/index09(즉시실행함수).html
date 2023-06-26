@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //즉시 실행되는 함수
+        (function(){
+            console.log('즉시 실행 함수');
+        })();
+
+//페이지 시작 시 실행시킬 함수를  (즉시실행함수)로 묶어주면 가독성이 좋습니다.
+        (function(a,b,c){
+            console.log(a, b, c);
+            func1();
+            func2();
+        })('홍길동',100,3.14);
+
+        function func1(){
+            console.log('func1 실행됨');
+        }
+
+        function func2(){
+            console.log('func2 실행됨');
+        }
+    </script>
+</body>
+</html>

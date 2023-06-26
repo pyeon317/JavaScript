@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //클로저를 이용한 세터
+        /* 
+        function obj(){
+            
+            var name = '홍길동';
+
+            //setter
+            return function (aaa){
+                name = aaa;
+                return name;
+            }
+        }
+
+        var result = obj();
+
+        console.log(result('이순신'));
+         */
+
+         function person(){
+            var name = '홍길동';
+
+            return{
+                //변수(aaa)로 이름 입력 받아서 변경(홍길동>이순신(아래 obj.setName('이순신');))
+                //자바 setter
+                'setName':function(aaa){
+                    name = aaa;
+                },
+                //자바 getter
+                'getName':function(){
+                    return name;
+                }
+
+            }; // 키:값 의 형태
+         }
+
+         var obj = person();
+         console.log(obj);
+
+         obj.setName('이순신');
+         console.log(obj.getName());
+
+    </script>
+
+</body>
+</html>
