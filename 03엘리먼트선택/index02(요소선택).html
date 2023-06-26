@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>css문법으로 엘리먼트 얻기</h3>
+
+    <ul class="box">
+        <li>안녕</li>
+        <li>hello</li>
+        <li>bye</li>
+    </ul>
+
+    <button id="btn">쿼리셀렉터</button>
+
+    <script>
+        var btn = document.querySelector("#btn");
+        //var li = document.querySelector(".box li");//"li"도 가능
+        var li = document.querySelectorAll(".box li");//"li"도 가능
+        
+        btn.addEventListener('click',function(){
+            
+            console.log(li);
+
+            for (var i = 0; i < li.length; i++) {
+                
+                //console.log(li[i]);
+                li[i].innerHTML = "얍!";
+                
+            }
+        });
+        
+    </script>
+
+
+</body>
+</html>

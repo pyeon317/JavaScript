@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- 이벤트 = 태그에서 일어나는 동작 js연결 -->
+    <!-- onclick 안에는 순수한 js코드가 들어갑니다. -->
+
+    <!-- 1 -->
+    <!--     
+        <button onclick="function aaa() {
+        alert('클릭했어요!');
+    }
+    aaa();
+    " >인라인이벤트</button> -->
+
+
+
+    <!-- 2 -->
+    <!--     <button onclick="aaa()">인라인이벤트</button>
+    <script>
+        function aaa() {
+            alert('클릭하셨네요?');
+        }
+    </script> -->
+
+    <!-- 3 -->
+    <button onclick="aaa(20)">인라인이벤트</button>
+    <script>
+        function aaa(age) {
+            alert('클릭하셨네요?' + age);
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

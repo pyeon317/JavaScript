@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="check2(this)" id="a" value="1">1</button>
+    <button onclick="check2(this)" id="b" value="2">2</button>
+    <button onclick="check2(this)" id="c" value="3">3</button>
+    <button onclick="check2(this)" id="d" value="4">4</button>
+
+    <script>
+        function check2(a) {
+            if (a.innerHTML !== a.id) {
+                a.innerHTML = a.id;
+            } else {
+                a.innerHTML = a.value;
+            }
+            
+            
+        }
+    </script>
+</body>
+</html>

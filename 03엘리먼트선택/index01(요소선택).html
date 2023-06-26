@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>체크박그 요소 확인</button>
+
+    <input type="checkbox" name="inter" value="1"> JS
+    <input type="checkbox" name="inter" value="2"> CSS
+    <input type="checkbox" name="inter" value="3"> JSX
+    <input type="checkbox" name="inter" value="4"> Java
+    <input type="checkbox" name="inter" value="5"> Python
+
+    <script>
+        var inter = document.getElementsByName("inter");
+        var btn = document.getElementById("btn");
+        /* console.log(inter[0]);
+        console.log(inter[1]); */
+        for (var i = 0; i < inter.length; i++) {
+            //console.log(inter[i]);
+            console.log(inter[i].value);
+        }
+
+    </script>
+
+
+
+
+    <hr />
+
+    <button id="btn2">클래스명으로 얻기</button>
+
+    <input type="radio" name="major" class="box" value="1">프로그램
+    <input type="radio" name="major" class="box" value="2">디자인
+    <input type="radio" name="major" class="box" value="3">시스템
+    <input type="radio" name="major" class="box" value="4">네트워크
+
+    <script>
+        //클래스명으로 엘리먼트를 얻음
+        var boxs = document.getElementsByClassName("box");
+
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function(){
+           
+            //반복
+            console.log(boxs);
+
+        }
+
+        //태그명으로 얻기
+        var inputs = document.getElementsByTagName("input");
+        console.log(inputs);
+    </script>
+
+
+
+</body>
+
+</html>

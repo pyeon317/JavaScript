@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <button onclick="check(this)">버튼의 이벤트</button>
+
+    <script>
+
+        function check(a) {
+            //console.log(a); //태그
+            //console.log(a.innerHTML); //사이값을 태그형태로 얻음
+            a.innerHTML = "얍!";
+        };
+
+    </script>
+
+
+<button id="btn">이벤트 함수 안에서 this</button>
+    
+    <script>
+        //js에서 this의 의미 - 선언된 위치에 따라서 달라집니다.(렉시컬스코프)
+
+        var x = 1;
+        function xxx(){
+            var x = 10;
+            console.log(this);//window객체
+            console.log(x); //지역변수 x
+            console.log(this.x); //전역변수 x
+        }
+        xxx();
+
+        //이벤트 함수 안에서 this
+        var btn = document.getElementById("btn");
+        
+        btn.onclick = function(){
+            
+            console.log(this);//태그 자기자신
+            //헷갈리면 출력한 다음에 확인
+        }
+
+    </script>
+
+
+</body>
+</html>

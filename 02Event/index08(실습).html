@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> 버튼을 클릭했을 때 input태그의 공백여부, 체크여부(checked)를 확인하세요 (이벤트 방식 자유)</h3>
+	<b>이벤트는 버튼에 걸립니다. 이벤트 안에서 input 태그를 사용할 수 있으면 됩니다. </b>
+
+    <hr/>
+    ID:<input type="input" id="id">
+    기억하기<input type="checkbox" id="remember" >
+    <button type="button" id="check2">확인</button>
+    
+    <script>
+        var a = document.getElementById('id');
+        var b = document.getElementById('remember');
+        var c = document.getElementById('check2');
+
+        c.onclick = function () {
+            console.log(a.value);
+            console.log(b.checked);
+        }
+    </script>
+</body>
+</html>
