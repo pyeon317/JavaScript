@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="box">
+        <li>박스1</li>
+        <li>박스1</li>
+        <li>박스1</li>
+    </ul>
+
+    <button id="btn">css변경하기</button>
+
+    <script>
+        //var li = document.querySelector(".box li");
+        var li = document.querySelectorAll(".box li")
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+
+            //li.style.color = 'red';
+            //li.style.backgroundcolor = 'blue'; //백그라운드컬러 쓸 때 C 는 대문자여야 함.
+            for(var i = 0; i < li.length; i++){
+                li[i].style.color = 'red';
+                li[i].style.backgroundColor = 'blue';
+            }
+        }
+
+    </script>
+</body>
+</html>

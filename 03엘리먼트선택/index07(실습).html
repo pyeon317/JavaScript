@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3>이벤트 종류를 결정해서 한번에 css스타일 변경하기</h3>
+
+    <img src="img/1.jpg" alt="이미지" class="img" width="300" style="border: 3px solid #000;">
+
+    <select class="sel">
+        <option value="1.jpg">봄</option>
+        <option value="2.jpg">여름</option>
+        <option value="3.jpg">가을</option>
+        <option value="4.jpg">겨울</option>
+    </select>
+
+    변경할 색상 : <input type="color" class="col">
+
+    <script>
+
+        var sel = document.querySelector(".sel");
+        var col = document.querySelector(".col");
+        var img = document.querySelector(".img");
+
+        sel.addEventListener('change', function () {
+            img.src = 'img/' + sel.value;
+            console.log(sel.value);
+        })
+        col.addEventListener('change', function () {
+            img.style.border = "3px solid" + col.value;
+            console.log(col.value);
+        })
+
+    </script>
+
+    <!-- <script>
+
+        var sel = document.querySelector(".sel");
+        var col = document.querySelector(".col");
+        var img = document.querySelector(".img");
+
+        sel.onchange = function () {
+            img.src = 'img/' + sel.value;
+            console.log(sel.value);
+        }
+        col.onchange = function () {
+            img.style.border = "3px solid" + col.value;
+            console.log(col.value);
+        }
+
+    </script> -->  <!-- 같은 내용인데 change 적용하는 법이 다름 -->
+
+
+</body>
+
+</html>

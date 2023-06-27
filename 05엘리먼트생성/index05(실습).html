@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3>input은 지우는 게 아니라 display를 제어하세요</h3>
+    <h3>할일 목록 만들기</h3>
+
+    <h3 id="hi"></h3>
+    <input type="text" id="name" placeholder="이름을 입력하세요">
+    <button id="btn1">확인</button>
+
+    <br />
+
+    <input type="text" id="todo" placeholder="당신의 할 일을 적으세요">
+    <button id="btn2">확인</button>
+
+    <ul>
+
+    </ul>
+
+
+    <script>
+        var na = document.getElementById("name");//var로 name하면 충돌일어나서 출력안됨
+        var btn1 = document.getElementById("btn1");
+        var hello = document.getElementById("hi");
+
+        var todo = document.getElementById("todo");
+        var btn2 = document.getElementById("btn2");
+        var ul = document.querySelector("ul");
+
+        btn1.addEventListener('click', function () {
+            console.log(na.value);
+            console.log(btn1);
+
+            na.style.display = 'none';
+            btn1.style.display = 'none';
+
+            var text = (na.value) + '님 안녕하세요';
+            hi.innerHTML = text;
+        });
+
+        btn2.addEventListener('click', function () {
+
+            var li = document.createElement('li');
+            var text = document.createTextNode(todo.value);
+            var remove = '<button onclick=del(this.parentElement)>X</button>';
+
+            li.appendChild(text);
+            li.innerHTML += remove;
+            ul.appendChild(li);
+
+            todo.value="";
+
+
+
+        });
+        
+        function del(a) {
+            a.remove();
+        }
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

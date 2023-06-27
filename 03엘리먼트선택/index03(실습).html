@@ -12,25 +12,36 @@
     <h2>자바스크립트 카운트(인라인 이벤트를 이용해서 innerHTML value 속성을 이용해서 카운트처리하세요)</h2>
     <h3>필요한 속성을 추가해도 됩니다</h3>
     <input type="number" value='0' id="inp">
-    <button id="p">+</button>
+    <button id="p" onclick="add(this)">+</button>
 
-    <button id="m">-</button>
+    <button id="m" onclick="add(this)">-</button>
 
     <script>
         var x = document.getElementById("inp");
+        
+        function add(a) {
+            if(a.innerHTML == "+"){
+                x.value++;
+            //노션보고 다시 수정할 덜요
+        }else{
 
-        p.onclick = function () {
+        }
+    };
+    </script>
+
+    <script>
+         p.addEventListener('click', function () {
             x.value = parseInt(x.value)+1;
             console.log(x.value);
-        };
-        m.onclick = function () {
+        });
+        m.addEventListener('click', function () {
             x.value = parseInt(x.value)-1;
             if (x.value <= 0) {
                 alert('0보다 작을 수 없습니다.');
                 x.value = 0;
             }
             console.log(x.value);
-        };
+        });
     </script>
 
 </body>
