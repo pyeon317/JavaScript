@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3>input은 지우는 게 아니라 display를 제어하세요</h3>
+    <h3>할일 목록 만들기</h3>
+
+    <form class="myForm">
+        <h3 class="nameTitle"></h3>
+        <input type="text" class="nameInput" placeholder="이름을 입력하세요">
+        <button type="button" id="nameBtn">확인</button>
+        <!-- 버튼이 form태그에 있으면 자동으로 submit이 일어남 -->
+        <!-- 따라서 type="button" 필요 -->
+    </form>
+    <form class="todoForm">
+
+        <input type="text" class="todoInput" placeholder="당신의 할 일을 적으세요">
+        <button type="button" id="todoBtn">확인</button>
+
+        <ul class="todoList">
+
+        </ul>
+    </form>
+
+
+
+    <script>
+        var myForm = document.querySelector('.myform')
+
+        var nameTitle = myform.querySelector('.nameTitle');
+        var nameInput = myform.querySelector('.nameInput');
+        var nameBtn = myform.querySelector('#nameBtn');
+
+
+
+        nameBtn.addEventListener('click', function () {
+            nameTitle.innerHTML = nameInput.value + '님 안녕하세요';
+            nameInput.value = '';
+
+
+            nameInput.style.display = 'none';
+            nameBtn.style.display = 'none';
+
+        });
+
+        var todoForm = document.querySelector('.todoForm');
+
+        var todoList = todoForm.querySelector('.todoList');
+        var todoInput = todoForm.querySelector('.todoInput');
+        var todoBtn = todoForm.querySelector('#todoBtn');
+
+        todoBtn.addEventListener('click', function () {
+
+
+            var text = (todoInput.value);//값
+            var li = document.createElement('li');
+            li.innerHTML = text;
+
+            var button = document.createElement('button');
+            button.innerHTML = '삭제';
+            button.type = 'button';
+            todoInput.value = "";//공백
+
+            //button이 동적으로 생성될 때 (인라인ok, 기본ok, 표준ok)
+            button.onclick = del;
+
+
+            li.appendChild(button);
+
+            todoList.appendChild(li);
+
+
+
+
+
+        });
+
+        //삭제
+        function del() {
+            this.parentElement.remove();
+        }
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

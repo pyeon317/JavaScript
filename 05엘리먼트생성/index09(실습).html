@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        thead th,
+        tbody td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button button="type" id="del">일괄 삭제</button>
+    <table>
+        <thead>
+            <th><input type="checkbox" class="allCheck"></th>
+            <th>번호</th>
+            <th>이름</th>
+            <th>내용</th>
+            <th>날짜</th>
+        </thead>
+
+        <tbody class="table">
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>1</td>
+                <td>홍길자</td>
+                <td>안녕!</td>
+                <td>2019-01-01</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>2</td>
+                <td>김길자</td>
+                <td>안녕!</td>
+                <td>2019-01-01</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>3</td>
+                <td>이길자</td>
+                <td>안녕!</td>
+                <td>2019-01-01</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="check"></td>
+                <td>4</td>
+                <td>고길자</td>
+                <td>안녕!</td>
+                <td>2019-01-01</td>
+            </tr>
+
+        </tbody>
+
+        <script>
+            var remove = document.querySelector("#del");
+            var allCheck = document.querySelector(".allCheck");
+            var arr = document.querySelectorAll(".check");
+
+
+            allCheck.onclick = function () {
+                if (allCheck.checked === true) {
+                    for (var i = 0; i < arr.length; i++) {
+
+                        arr[i].checked = true;
+                    }
+                } else {
+                    for (var i = 0; i < arr.length; i++) {
+
+                        arr[i].checked = false;
+                    }
+                }
+            };
+            //addEventListener  에서는 change도 즉시적용됨
+            /* allCheck.addEventListener('click', function () {
+                if (allCheck.checked == true) {
+                    for (var i = 0; i < arr.length; i++) {
+
+                        arr[i].checked = true;
+                    }
+                } else {
+                    for (var i = 0; i < arr.length; i++) {
+
+                        arr[i].checked = false;
+                    }
+                }
+            }); */
+
+            remove.onclick = function del() {
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].checked == true) {
+                        arr[i].parentElement.parentElement.remove();
+                        //한단계만 올라가면 체크박스가 있는 칸만 사라짐
+                    }
+
+                }
+
+            };
+        </script>
+
+    </table>
+</body>
+
+</html>
+<!-- 
+allCheck.onclick = function () {
+ if (allCheck.checked === true) {
+  for (var i = 0; i < arr.length; i++) {
+
+   arr[i].checked = true;
+   }
+  } else {
+   for (var i = 0; i < arr.length; i++) {
+
+    arr[i].checked = false;
+  }
+ }
+};
+
+//----------------------------------------------------
+
+allCheck.addEventListener('click', function () {
+ if (allCheck.checked === true) {
+  for (var i = 0; i < arr.length; i++) {
+  
+   arr[i].checked = true;
+  }
+ } else {
+  for (var i = 0; i < arr.length; i++) {
+	
+   arr[i].checked = false;
+  }
+ }
+}); 
+
+//----------------------------------------------------
+
+allCheck.addEventListener('change', function () {
+ if (allCheck.checked === true) {
+  for (var i = 0; i < arr.length; i++) {
+  
+   arr[i].checked = true;
+  }
+ } else {
+  for (var i = 0; i < arr.length; i++) {
+	
+   arr[i].checked = false;
+  }
+ }
+}); 
+ -->

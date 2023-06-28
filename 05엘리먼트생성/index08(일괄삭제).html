@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>
+            <input type="checkbox" name="aa" value="1">자바
+        </li>
+        <li>
+            <input type="checkbox" name="aa" value="2">JS
+        </li>
+        <li>
+            <input type="checkbox" name="aa" value="3">CSS
+        </li>
+        <li>
+            <input type="checkbox" name="aa" value="4">Database
+        </li>
+    </ul>
+
+    <button type="button" id="btn">일괄삭제버튼</button>
+
+
+    <script>
+        var arr = document.querySelectorAll("");
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+
+            for (var i = 0; i < arr.length; i++) {
+                //console.log(arr[i]);//input태그
+                console.log(arr[i].checked);//input의 체크야부
+                if(arr[i].checked == true){
+                    arr[i].parentElement.remove();
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
