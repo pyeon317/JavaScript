@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="box">
+        <li><a href="https://www.naver.com">1</a></li>
+        <li><a href="https://www.naver.com">2</a></li>
+        <li><a href="https://www.naver.com">3</a></li>
+        <li><a href="https://www.naver.com">4</a></li>
+    </ul>
+
+
+    <script>
+        var box = document.querySelector(".box");
+        box.addEventListener('click',function(){
+
+            //a태그 또는 submit, form태그안에 button 고유 이벤트를 가집니다.
+            event.preventDefault();//고유이벤트 중단
+
+            console.log('태그 실행되나?');
+
+        })
+    </script>
+
+
+
+
+</body>
+</html>

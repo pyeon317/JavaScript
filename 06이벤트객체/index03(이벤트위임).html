@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>버튼으로 눌러서 처리하는게 아니라, 동일한 태그 여러개에 대해서 즉시 반영</h3>
+
+    <p class="title"></p>
+
+    <ul class="box">
+        <li>1. 홍길동</li>
+        <li>2. 홍길자</li>
+        <li>3. 이순신</li>
+        <li>4. 홍길순</li>
+        <li>5. 신사임당</li>
+
+    </ul>
+
+    <script>
+        var title = document.querySelector(".title");
+
+        var box = document.querySelector(".box"); //UL
+
+        box.onclick = function(){
+
+            //console.log('이벤트위임.');
+            //console.log(this); //UL
+            
+            //console.log(event.Target); //이벤트가 동작한 태그
+            //console.log(event.currentTarget);//실제로 이벤트가 걸려있는 태그
+            
+            
+            //ul태그일 때는 전체가 선택된다?
+            //ul태그일 때는 동작을 안하게 만든다.
+            
+            //console.dir(event.target.tagName);//이벤트가 동작한 태그명
+            
+            if(event.target.tagName != "LI"){
+                return;
+            }
+            title.innerHTML = event.target.innerHTML;//조건이 없을 때 드래그로 2개이상 선택하면 5개 전부 출력됨
+
+
+        }
+
+    </script>
+
+
+</body>
+</html>

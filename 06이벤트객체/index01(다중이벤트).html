@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3>버튼으로 눌러서 처리하는게 아니라, 동일한 태그 여러개에 대해서 즉시 반영</h3>
+
+    <p class="title"></p>
+
+    <ul class="box">
+        <li>1. 홍길동</li>
+        <li>2. 홍길자</li>
+        <li>3. 이순신</li>
+        <li>4. 홍길순</li>
+        <li>5. 신사임당</li>
+
+    </ul>
+
+    <script>
+        //반복문으로 다중이벤트 걸기
+        var li = document.querySelectorAll(".box > li");
+
+        for (var i = 0; i < li.length; i++) {
+
+            /* (function (a) {
+                li[i].onclick = function () {
+
+                    console.log(li[i].innerHTML);
+
+                }
+            })(i); */
+
+            li[i].onclick = function(){
+                //console.log(this);
+                document.querySelector(".title").innerHTML = event.target.innerHTML;
+            }
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>dateset - 태그에 정보를 저장하는 속성 (반드시 문자열만 저장가능)</h3>
+
+    <h3>data-자유이름</h3>
+
+    <ul class="box">
+        <li><a href="https://www.naver.com" data-info='{"id": "aaa", "age": 20}'>홍길동</a></li>
+        <li><a href="https://www.naver.com" data-info='{"id": "bbb", "age": 30}'>이순신</a></li>
+        <li><a href="https://www.naver.com" data-info='{"id": "ccc", "age": 40}'>홍길자</a></li>
+        <li><a href="https://www.naver.com" data-info='{"id": "ddd", "age": 50}'>신사임</a></li>
+    </ul>
+
+
+    <script>
+        var box = document.querySelector('.box');
+        box.onclick = function(){
+            event.preventDefault();//고유이벤트 중단
+            if(event.target.tagName != "A"){//A태그 아니라면 중단
+                return;
+            }
+
+            //event.target.data-info;
+
+            //console.dir(event.target);
+            //console.log( event.target.dataset.info )
+
+            var value = event.target.dataset.info;
+            var obj = JSON.parse(value);//JSON문자열 => 객체
+
+            console.log(obj);
+
+        }
+    </script>
+
+    
+</body>
+</html>

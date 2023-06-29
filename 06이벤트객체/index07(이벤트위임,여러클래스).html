@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <div class="box">
+            <div>
+                <span>홍길동</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>이순신</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>홍길자</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>신사임당</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var box = document.querySelector(".box") ;
+        box.onclick = function(){
+            
+            // console.log(event.target);
+            // console.log(event.target.classList);
+            // console.log(event.target.classList.contains('sel'));
+
+            
+
+            if(event.target.classList.contains('sel')){//셀렉트 버튼
+
+                event.target.previousElementSibling.style.color = 'red';
+
+            }else if(event.target.classList.contains('del')){//딜리트 버튼
+
+                event.target.parentElement.remove();
+            }
+
+        }
+
+    </script>
+
+
+</body>
+</html>

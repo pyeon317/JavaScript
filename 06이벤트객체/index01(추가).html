@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+    <h3>이벤트 객체 - 이벤트가 발생하면, 함수 안으로 자동으로 이벤트 객체를 전달해줍니다.</h3>
+
+
+    <button id="btn">이벤트객체 확인</button>
+
+<script>
+    var btn = document.getElementById("btn");
+    
+    btn.onclick = function(e){//e 말고 다른거 써도 되긴 함
+
+        //console.log(event);//이벤트에 관련한 정보가 있음(첫번째 매개변수로 넣어주도록 약속 되어 있음)
+        console.log(e);
+        console.log(e.target);//이벤트가 실제 동작한 태그
+        
+    }
+
+
+</script>
+
+
+
+
+<h3>버튼으로 눌러서 처리하는게 아니라, 동일한 태그 여러개에 대해서 즉시 반영</h3>
+
+<p class="title"></p>
+
+<ul class="box">
+    <li>1. 홍길동</li>
+    <li>2. 홍길자</li>
+    <li>3. 이순신</li>
+    <li>4. 홍길순</li>
+    <li>5. 신사임당</li>
+    
+</ul>
+
+<script>
+    //반복문으로 다중이벤트 걸기
+    var li = document.querySelectorAll(".box > li");
+    
+    for(var i = 0; i < li.length; i++){
+
+       /*  li[i].onclick = function(){
+            
+            console.log(li[i].innerHTML);
+            
+        } */
+
+        li[i].onclick = function(){
+            //console.log(this);
+        }
+
+    }
+    
+    
+
+</script>
+
+</body>
+</html>

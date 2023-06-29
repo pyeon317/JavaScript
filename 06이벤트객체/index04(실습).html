@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        ul li {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>다중이벤트 처리</h3>
+    <div>
+        <ul class="box">
+            <li><img src="img/1.jpg" alt="1" width="100"></li>
+            <li><img src="img/2.jpg" alt="1" width="100"></li>
+            <li><img src="img/3.jpg" alt="1" width="100"></li>
+            <li><img src="img/4.jpg" alt="1" width="100"></li>
+        </ul>
+        결과:
+        <div class="result">
+            <img src="img/1.jpg" alt="결과" width="300">
+        </div>
+    </div>
+
+    <script>
+        var box = document.querySelector(".box");
+        var result = document.querySelector(".result > img");
+
+        box.onclick = function () {
+            console.dir(event.target);
+
+            if(event.target.tagName !== "IMG"){//태그네임은 항상 대문자로 적혀있음
+                return;
+            }
+            result.src = event.target.src;
+        }
+        
+        /* box.addEventListener('click', function(){
+            //ul,li,img에서 전부 동작
+            if(event.target.tagName != "IMG"){
+                return;
+            }
+            result.src = event.target.src;
+        }) */
+
+
+    </script>
+
+
+</body>
+
+</html>
