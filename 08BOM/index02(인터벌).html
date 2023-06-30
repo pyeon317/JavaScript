@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="stopInterval">인터벌 중지</button>
+
+    <script>
+
+        var stop = setInterval(function() {
+
+            console.log(1);
+
+        }, 1000); //밀리초라서 1000을 써야 1초
+
+        console.log(stop);
+
+
+        //인터벌 중지
+        var stopInterval = document.getElementById("stopInterval");
+        stopInterval.onclick = function(){
+            
+            clearInterval(stop);//셋인터벌이 반환하는 아이디값
+            console.log("중지");
+        }
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

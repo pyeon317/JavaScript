@@ -78,49 +78,72 @@
         var div = document.querySelectorAll('.toggle-menu');
 
         toggle.addEventListener('click', function (e) {
-            
+
             var id = e.target.dataset.id;
+            if (e.target.tagName != "LI") {
 
-            //console.log('#'+div[0].id === id);
+                //console.log('#'+div[0].id === id);
 
-            for (var i = 0; i < div.length; i++) {
+                // for (var i = 0; i < div.length; i++) {
+
+                //     /* var sid = div[i].id;//여기서 바로'#'+div[i].id써도 될듯
+                //     var tm = document.querySelector('#' + div[i].id);
+
+                //     //console.log(tm);
+                //     console.log(tm.classList);
+
+                //     if ('#' + div[i].id === id) {
+                //         tm.classList.add('active');
+
+                //     } else {
+
+                //         tm.classList.remove('active');
+                //     } */
+
+                //     var sid = '#' + div[i].id;
+                //     var tm = document.querySelector(sid);
+
+                //     if (sid === id) {
+                //         tm.classList.add('active');
+
+                //     } else {
+
+                //         tm.classList.remove('active');
+                //     }
+                //     console.log(tm.classList);
+                // }
+
+                //-------------------------------------------------
+                var id = e.target.dataset.id;
+                var box = document.querySelector('.box');
+                var result = box.querySelector(id);
                 
-                /* var sid = div[i].id;//여기서 바로'#'+div[i].id써도 될듯
-                var tm = document.querySelector('#' + div[i].id);
-                
-                //console.log(tm);
-                console.log(tm.classList);
-
-                if ('#' + div[i].id === id) {
-                    tm.classList.add('active');
-
-                } else {
-
-                    tm.classList.remove('active');
-                } */
-
-                var sid = '#' + div[i].id;
-                var tm = document.querySelector(sid);
-                
-                if (sid === id) {
-                    tm.classList.add('active');
-
-                } else {
-
-                    tm.classList.remove('active');
+                for (var i = 0; i < div.length; i++) {
+                    div[i].classList.remove('active');
                 }
-                console.log(tm.classList);
+                
+                result.classList.add('active');
+
+                //-------------------------------------------------
+
+                // var act = document.querySelector(id);
+
+                // //console.log(id);console.log(act);
+                // for (var i = 0; i < div.length; i++) {
+
+                //     if ('#' + act.id === id) {
+
+                //         act.classList.toggle('active');
+
+                //     } else {
+                //         if (act.classList.contains('active')) {
+                //             act.classList.toggle('active');
+                //         }
+                //     }
+
+                // }
+
             }
-
-            //-------------------------------------------------
-            //var id = e.target.dataset.id;
-            var box = document.querySelector('.box');
-            var result = box.querySelector(id);
-            
-            result.classList.add('active');
-            
-
-            
 
         })
     </script>

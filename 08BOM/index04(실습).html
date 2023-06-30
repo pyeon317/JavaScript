@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .bgImg {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                margin-left: -100%;
+            }
+
+            to {
+                opacity: 1;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 애니메이션이 새롭게 적용되려면, img 태그를 새롭게 생성 -->
+    <div class="img">
+        <img src="img/slide1.jpg" class="bgImg">
+    </div>
+
+    <script>
+        var img = document.querySelector('.img');
+        var imgs = [
+            '<img src="img/slide1.jpg" class="bgImg">',
+            '<img src="img/slide2.jpg" class="bgImg">',
+            '<img src="img/slide3.jpg" class="bgImg">', 
+            '<img src="img/slide4.jpg" class="bgImg">'
+        ];
+
+        var i = 0;
+
+        setInterval(function () {
+            
+            if (i == 3) {
+                i = 0;
+            }else{
+                i++;
+            }
+            
+            console.log(i);
+            img.innerHTML = imgs[i];
+            console.log(img.innerHTML);
+
+        }, 3000);
+
+    </script>
+</body>
+
+</html>

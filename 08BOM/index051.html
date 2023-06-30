@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <h3>네이버 타이머 도전하기</h3>
+    <span>조건<br />
+        <span>1.select태그는 시간:99 or 분:60 or 초:60으로 화면이 생성될 때 엘리먼트 생성기법으로 처리합니다.<br /></span>
+        <span>2.시간설정 버튼을 클릭하면 시간이 세팅됩니다<br /></span>
+        <span>3.타이머 시작버튼은 토글형태로 타이머가 동작 중이라면 일시정지버튼으로 활성화됩니다.<br /></span>
+        <span>4.사용자가 버튼을 잘못 클릭하는 경우를 고려하여, 어떠한 경우라도 중복으로 타이밍이 발생되면 안됩니다.<br /></span>
+    </span>
+
+    <h3>시간을 선택하세요</h3>
+
+    <div>
+
+        <select name="time" id="hour"></select>
+        <select name="time" id="min"></select>
+        <select name="time" id="sec"></select>
+        <button class="set" type="submit">시간설정</button>
+        <button class="start">타이머시작</button>
+
+    </div>
+
+    <h3 class="timer">00:00:00</h3>
+
+
+    <script>
+
+        //------------------------------------------------------ hour 입력
+
+        var hour = document.querySelector("#hour");
+
+        for (var i = 0; i <= 99; i++) {
+
+            var option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            // console.log(option);
+
+            hour.appendChild(option);
+
+        }
+        //------------------------------------------------------ min 입력
+
+        var min = document.querySelector('#min');
+
+        for (var i = 0; i <= 60; i++) {
+
+            var option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            // console.log(option);
+
+            min.appendChild(option);
+
+        }
+        //------------------------------------------------------ sec 입력
+
+        var sec = document.querySelector('#sec');
+
+        for (var i = 0; i <= 60; i++) {
+
+            var option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            // console.log(option);
+
+            sec.appendChild(option);
+
+        }
+        // console.log(hour);
+        // console.log(min);
+        // console.log(sec);
+        //------------------------------------------------------
+
+        var set = document.querySelector('.set');
+        var timer = document.querySelector('.timer');
+
+
+
+        set.addEventListener('click', function () {
+            stop(start);
+            var sethour = hour.value;
+            var setmin = min.value;
+            var setsec = sec.value;
+            if (hour.value < 10) sethour = '0' + hour.value;
+            if (min.value < 10) setmin = '0' + min.value;
+            if (sec.value < 10) setsec = '0' + sec.value;
+
+            console.log(timer.innerHTML);
+            timer.innerHTML = sethour + ":" + setmin + ":" + setsec;
+        });
+
+        //------------------------------------------------------
+
+        var startbtn = document.querySelector('.start');
+        startbtn.onclick = start();
+
+        /* var startbtn = document.querySelector('.start');
+        var intervalId;
+
+        function start() {
+            intervalId = setInterval(function () {
+                // 실행될 코드를 작성합니다.
+                console.log("setInterval이 실행되었습니다.");
+            }, 1000); // 1초마다 실행되도록 설정합니다.
+        } */
+
+        startbtn.onclick = start;
+
+        var start = setInterval(function () {
+
+            var sethour = hour.value;
+            var setmin = min.value;
+            var setsec = sec.value;
+            if (hour.value < 10) sethour = '0' + hour.value;
+            if (min.value < 10) setmin = '0' + min.value;
+            if (sec.value < 10) setsec = '0' + sec.value;
+
+            if (timer.innerHTML == '00:00:00') {
+
+                console.log('1');
+                stop(start);
+
+            } else if (sec.value <= 0) {
+                sec.value = 59;
+                setsec = '00';
+                min.value--;
+                console.log(sec.value);
+
+            } else if (min.value < 1) {
+
+            }
+            else {
+                --sec.value;
+                console.log(sec.value);
+            }
+
+
+
+            timer.innerHTML = sethour + ":" + setmin + ":" + setsec;
+        }, 1000);
+
+        function stop() {
+            clearInterval(start);
+        }
+
+    </script>
+
+</body>
+
+</html>

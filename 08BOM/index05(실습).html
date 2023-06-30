@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-size: cover
+        }
+
+        .bgImg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /*z방향 가장 아래로*/
+            animation: fadeIn .5s linear;
+            /*아래 키프레스 fadeIn호출*/
+        }
+
+
+        .clock h2 {
+            color: red;
+            text-align: center;
+            margin-top: 300px;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+</head>
+
+<body data-img='{"1": "img/1.jpg", "2":"img/2.jpg", "3": "img/3.jpg", "4": "img/4.jpg"}'>
+    <!-- Object의 길이를 확인하는 문법은 검색 -->
+    <!-- 
+        배경을 넣을 이미지의 형태 <img class="bgImg" src="##"> 
+        를 body의 하위자식으로 추가하는 방향으로 코드를 작성하세요.
+    -->
+
+    <div class="clock">
+        <h2>00:00:00</h2>
+    </div>
+
+
+
+    <script>
+        window.onload
+
+        var time = document.querySelector(".clock > h2");
+
+        setInterval(clock, 1000);
+
+        function clock() {
+            var date = new Date();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+
+            if (date.getSeconds() < 10) {
+                second = '0' + second;
+            } else if (date.getMinutes() < 10) {
+                minute = '0' + minute;
+            } else if (date.getHours() < 10) {
+                hour = '0' + hour;
+            };
+
+
+            time.innerHTML = hour + ":" + minute + ":" + second;
+        };
+
+        var body = document.querySelector('body');
+        var value = body.dataset.img;
+        var obj = JSON.parse(value);
+
+        var i = 1;
+
+        setInterval(changeImg, 5000);
+
+        function changeImg() {
+            
+            var del = body.querySelector('.bgImg'); //기존 이미지 삭제
+            if (del) body.removeChild(del);
+            
+
+            var img = document.createElement("img"); //이미지 생성
+            img.src = obj[i++];
+            img.classList.add('bgImg');
+
+            body.appendChild(img); //body에 추가
+
+            if (i == 5)  i = 1 ;
+
+
+        };
+
+    </script>
+
+
+
+</body>
+
+</html>

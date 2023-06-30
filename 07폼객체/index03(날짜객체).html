@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Date객체
+    <script>
+
+        var date = new Date();
+        
+        //날짜 표기법 형변환
+        console.log(date); //날짜형
+        console.log(date.toUTCString()); //세계협정시 = 영국기준시
+        console.log(date.toISOString()); //세계표준 표기법
+        
+
+        //밀리초로 반환(날짜 연산에 사용됨)
+        console.log( date.getTime()) ;
+
+        var prev = new Date(1688094767402);
+        //console.log(prev);
+        //console.log(date - prev);//날짜형(밀리초)
+        var gap = date - prev;//현재 시간과 특정 시간이 gap
+
+        console.log([parseInt(gap / 1000)]) // 초
+        console.log([parseInt(gap / 1000 / 60)]) // 분
+
+        //년월일 시분초 얻기
+        var year = date.getFullYear(); //년
+        var month = date.getMonth() + 1; //월
+        var day = date.getDate(); //일
+        var hour = date.getHours(); //시간
+        var minute = date.getMinutes() //분
+        var second = date.getSeconds() //초
+
+        console.log(year,month,day,hour,minute,second);
+
+        var date2 = new Date(year, month, day)
+        console.log(date2);
+
+
+    </script>
+
+
+</body>
+</html>
