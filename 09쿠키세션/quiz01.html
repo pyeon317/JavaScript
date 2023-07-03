@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>localStorage를 이용하여 마지막에 클릭한 2개의 정보를 불러오기</h3>
+
+    <div class="list">
+        <img src="img/1.jpg" width="300">
+        <img src="img/2.jpg" width="300">
+        <img src="img/3.jpg" width="300">
+        <img src="img/4.jpg" width="300">
+    </div>
+
+    <button type="button" onclick="location.href='quiz01_result.html';" >최신정보확인하기</button>
+
+
+    <script>
+        var img = document.querySelector(".list");
+
+        
+        var count = 0;
+            
+            img.onclick = function(e){
+                
+                var click = e.target;
+                
+
+                if(click.tagName === 'IMG'){
+                    localStorage.setItem(count, click.src);
+                    count++;
+                }
+                
+                if(count == 2){
+                    count = 0;
+                }
+
+                
+                
+                console.log(count);
+                console.log(localStorage.getItem(1));
+            }
+            
+        
+    
+    </script>  
+
+
+</body>
+</html>

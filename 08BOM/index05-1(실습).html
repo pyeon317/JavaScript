@@ -28,8 +28,8 @@
         <select name="time" id="hour"></select>
         <select name="time" id="min"></select>
         <select name="time" id="sec"></select>
-        <button class="set" type="submit">시간설정</button>
-        <button class="start">타이머시작</button>
+        <button class="set">시간설정</button>
+        <button class="startbtn">타이머시작</button>
 
     </div>
 
@@ -47,7 +47,7 @@
             var option = document.createElement("option");
             option.value = i;
             option.innerHTML = i;
-            // console.log(option);
+
 
             hour.appendChild(option);
 
@@ -61,7 +61,7 @@
             var option = document.createElement("option");
             option.value = i;
             option.innerHTML = i;
-            // console.log(option);
+
 
             min.appendChild(option);
 
@@ -75,7 +75,7 @@
             var option = document.createElement("option");
             option.value = i;
             option.innerHTML = i;
-            // console.log(option);
+
 
             sec.appendChild(option);
 
@@ -88,16 +88,24 @@
         var set = document.querySelector('.set');
         var timer = document.querySelector('.timer');
 
+        var sethour;//타이머에 표기되는 시간
+        var setmin;
+        var setsec;
+
+        var rechour = 0;//계산 및 타이머에 기록하기 위해 기록하는 시간변수(select의 value가 변하지 않기 위함)
+        var recmin = 0;//Interval이 자동재생되는 게 아니면 0을 쓸 필요가 없다.
+        var recsec = 0;
 
 
         set.addEventListener('click', function () {
-            stop(start);
-            var sethour = hour.value;
-            var setmin = min.value;
-            var setsec = sec.value;
-            if (hour.value < 10) sethour = '0' + hour.value;
-            if (min.value < 10) setmin = '0' + min.value;
-            if (sec.value < 10) setsec = '0' + sec.value;
+            stopbtn(stop);
+            rechour = hour.value;
+            recmin = min.value;
+            recsec = sec.value;
+
+            if (rechour < 10) { sethour = '0' + rechour; } else { sethour = rechour; }
+            if (recmin < 10) { setmin = '0' + recmin; } else { setmin = recmin; }
+            if (recsec < 10) { setsec = '0' + recsec; } else { setsec = recsec; }
 
             console.log(timer.innerHTML);
             timer.innerHTML = sethour + ":" + setmin + ":" + setsec;
@@ -105,10 +113,10 @@
 
         //------------------------------------------------------
 
-        var startbtn = document.querySelector('.start');
-        startbtn.onclick = start();
+        var startbtn = document.querySelector('.startbtn');
 
-        /* var startbtn = document.querySelector('.start');
+
+        /* 
         var intervalId;
 
         function start() {
@@ -118,43 +126,60 @@
             }, 1000); // 1초마다 실행되도록 설정합니다.
         } */
 
-        startbtn.onclick = start;
 
-        var start = setInterval(function () {
-
-            var sethour = hour.value;
-            var setmin = min.value;
-            var setsec = sec.value;
-            if (hour.value < 10) sethour = '0' + hour.value;
-            if (min.value < 10) setmin = '0' + min.value;
-            if (sec.value < 10) setsec = '0' + sec.value;
-
-            if (timer.innerHTML == '00:00:00') {
-
-                console.log('1');
-                stop(start);
-
-            } else if (sec.value <= 0) {
-                sec.value = 59;
-                setsec = '00';
-                min.value--;
-                console.log(sec.value);
-
-            } else if (min.value < 1) {
-
-            }
-            else {
-                --sec.value;
-                console.log(sec.value);
-            }
+        var stop; //Interval을 중지시키기 위한 변수 선언
+        //startbtn.onclick = start(); 이걸로 하면 안눌러도 자동실행됨
 
 
+        startbtn.addEventListener('click', function start() {
 
-            timer.innerHTML = sethour + ":" + setmin + ":" + setsec;
-        }, 1000);
+            stopbtn(stop); //중복실행 방지를 위해 한번 멈추고 실행
 
-        function stop() {
-            clearInterval(start);
+            stop = setInterval(function () {
+
+                --recsec;
+
+                if (rechour == 0 && recmin == 0 && recsec == 0) { // Interval 종료
+
+                    console.log('end');
+                    stopbtn(stop);
+
+                }
+                
+                if (rechour >= 0 && recmin >= 0 && recsec < 0) {
+
+                    recsec = 59;
+                    setsec = '00';
+                    recmin--;
+                    console.log('sec');
+
+                }
+                
+                if (rechour > 0 && recmin < 0) {
+
+                    recmin = 59;
+                    setmin = '00';
+                    rechour--;
+                    console.log('ㅇㅇㅇ');
+
+                }
+
+
+                if (rechour < 10) { sethour = '0' + rechour; } else { sethour = rechour; }
+                if (recmin < 10) { setmin = '0' + recmin; } else { setmin = recmin; }
+                if (recsec < 10) { setsec = '0' + recsec; } else { setsec = recsec; }
+
+                timer.innerHTML = sethour + ":" + setmin + ":" + setsec;//타이머 시간 갱신
+
+                console.log(rechour, recmin, recsec);
+
+            }, 1000);
+        })
+
+
+
+        function stopbtn() {
+            clearInterval(stop);
         }
 
     </script>

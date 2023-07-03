@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="popup.js"></script>
+</head>
+<body>
+    
+
+    <h3>메인창</h3>
+
+    <script>
+        //페이지가 시작되면 팝업창을 띄워줍니다.
+        //사용자가 오늘하루 이창을 열지않기를 클릭하면 쿠키를 생성하고,
+        //쿠키가 있다면 다음 접속시에는 팝업창을 띄우지 않으면 됩니다.
+        if(getCookie('main_popup') !=true){
+            
+            window.open('popup.html', '메인팝업창', "width = 200px, height = 200px, top = 0, left = 300");
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //네비게이터객체 = 브라우저의 정보
+        // console.log(navigator);
+         console.log(navigator.userAgent);
+
+        var agent = navigator.userAgent.toLowerCase();//소문자로 변경
+
+        //firefox가 있다
+        if (agent.indexOf('firefox') != -1) {
+            console.log('firefox로 접속');
+        } else if (agent.indexOf('edg') != -1) {//edg, safari, chrome은 동일엔진을 사용하기 떄문에 역순배치
+            console.log('edge로 접속');
+        } else if (agent.indexOf('chrome') != -1) {
+            console.log('chrome로 접속');
+        }
+
+    </script>
+</body>
+
+</html>
