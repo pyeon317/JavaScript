@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <h3>localStorage를 이용하여 마지막에 클릭한 2개의 정보를 불러오기</h3>
 
     <div class="list">
@@ -17,39 +19,44 @@
         <img src="img/4.jpg" width="300">
     </div>
 
-    <button type="button" onclick="location.href='quiz01_result.html';" >최신정보확인하기</button>
+    <button type="button" onclick="location.href='quiz01_result.html';">최신정보확인하기</button>
 
 
     <script>
         var img = document.querySelector(".list");
 
-        
+
         var count = 0;
-            
-            img.onclick = function(e){
-                
-                var click = e.target;
-                
 
-                if(click.tagName === 'IMG'){
-                    localStorage.setItem(count, click.src);
-                    count++;
-                }
-                
-                if(count == 2){
-                    count = 0;
-                }
+        img.onclick = function (e) {
 
-                
-                
-                console.log(count);
-                console.log(localStorage.getItem(1));
+            var click = e.target;
+
+
+            if (click.tagName === 'IMG') {
+                localStorage.setItem(count, click.src);
+                count++;
             }
-            
-        
-    
-    </script>  
+
+            if (count == 2) {
+                //뒤에 더하고 첫번째를 지우면 : 2가 넘으면 0-a,1-b,2-c로 저장된 다음 첫번쨰가 삭제되서 1-b,2-c가 되고 
+                //그 다음부터는 count가 계속해서 2가 되기 때문에 앞의 1-b가 삭제 된다. 그러면 2-a, > 2-c > ...
+                //이런 식으로 키가 2인 세션 하나만 남음. 따라서 다시 0부터 시작해서 앞에서 덮어씌우는 것
+                count = 0;
+            }
+            //코드를 간결하게 하려면 이렇게 하는거고 그냥 지우고 다시 이름지어서 붙이고 이런거 다 쓰면 뒤에서 붙이고 앞에서 지우는 거 되긴 할 듯?
+
+
+
+            console.log(count);
+            console.log(localStorage.getItem(1));
+        }
+
+
+
+    </script>
 
 
 </body>
+
 </html>

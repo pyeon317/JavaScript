@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //동기적 콜백
+        /* function then(f) {
+            f('콜백값');
+        }
+
+        then(function(response){
+            console.log(response);
+        });
+ */
+
+        //비동기적 콜백의 형태
+        console.log(1);
+        function then(f){
+            setTimeout(function(){
+                f('콜백값');
+            },3000); 
+        }
+
+        then(function(response){
+            console.log(response);
+        })
+
+        console.log(2);
+
+
+    </script>
+
+</body>
+</html>

@@ -14,7 +14,21 @@
     </div>
 
     <script>
- 
+
+        var cartList = document.querySelector('.cartList');
+        var img1 = document.createElement("img");
+        img1.src = localStorage.getItem(0);
+        img1.style.width = '300px';
+
+        var img2 = document.createElement("img");
+        img2.src = localStorage.getItem(1);
+        img2.style.width = '300px';
+
+
+        cartList.appendChild(img1);
+        cartList.appendChild(img2);
+        console.log(img1);
+        console.log(img2);
 
     </script>
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //json데이터 읽기
+        fetch('hi.json').then(function (response) {
+
+            return response.json();//json > 오브젝트
+        }).then(function (data) {
+            console.log(data);
+        });
+
+        //xml데이터 읽기
+        fetch('hi.xml').then(function (response) {
+
+            return response.text(); // 일단 문자열로 변경
+        }).then(function (data) {
+
+            return new DOMParser().parseFromString(data, 'text/xml');
+
+        }).then(function (data) {
+
+            var arr = data.getElementsByTagName("data");
+
+
+            for (var i = 0; i < arr.length; i++) {
+                //console.log(arr[i].getElementsByTagName("name")[0].innerHTML);
+                console.log(arr[i].querySelector("name").innerHTML);
+            };
+
+        });
+    </script>
+</body>
+
+</html>
