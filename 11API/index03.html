@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3>리다이렉트 된 결과(서버 상태여야 합니다)</h3>
+
+    <script>
+        
+        
+        //카카오 서버에서 인가 코드를 url주소에 담아서 보내줍니다.
+        //3.인가코드 얻기
+
+        var urlSearch = new URLSearchParams(location.search);
+        var value = urlSearch.get("code");
+
+
+        //console.log(urlSearch);
+        //console.log(value);
+
+
+        //4. 토큰발급받기
+        if (value != null) {
+
+            ajax();
+        }
+
+        function ajax() {
+
+            var url = "http://127.0.0.1:5500/11API/index03.html";
+            var key = "f896c1f658b9f570e758a141cc788c3e";
+
+
+            var data = "grant_type=authorization_code" +
+                        "&client_id="+ key +
+                        "&redirect_uri="+url+
+                        "&code="+value;
+            //토큰요청
+            fetch('https://kauth.kakao.com/oauth/token',
+                {
+                    method: "post",
+                    headers: {
+                        "Content-Type": 'application/x-www-form-urlencoded;charset=UTF-8',//폼형식
+                    },
+                    body : data 
+            }).then(function(response){
+                return response.json();
+            }).then(function(data){
+                //console.log(data);
+
+                //브라우저 종료시에 모두 삭제
+                //쿠키 & 세션스토리지에 토큰 값
+                sessionStorage.setItem("kakao_access", data.access_token);
+
+                //Kakao.Auth.setAccessToken('data.access_token');
+
+                //사용자 정보 API호출하기
+                getUser(data.access_token);
+            });//마지막 세션만있다면 api사용가능
+
+        }
+
+        //5.토큰기반으로 API호출하기 JS로 처리
+        function getUser(token){
+
+            fetch('https://kapi.kakao.com/v2/user/me',{
+                method: 'post',
+                headers: {
+                    'Authorization': 'Bearer '+ token,
+                    "Content-Type": 'application/x-www-form-urlencoded;charset=UTF-8',
+                },
+
+            }).then(function(response){
+                return response.json();
+            }).then(function(data){
+                console.log(data);
+            })
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -17,9 +17,10 @@
         var cartList = document.querySelector(".cartList");
         var arr = JSON.parse(localStorage.getItem("like"));
 
-        if(arr != null){//값이 존재함
-            for(var i =0; i < arr.length;i++){
+        if(arr !== null){//값이 존재함
+            for(var i =0; i < arr.length; i++){
 
+                console.log(localStorage.getItem);
                 var img = document.createElement("img");
                 img.src = arr[i]//src
                 img.width = 200;

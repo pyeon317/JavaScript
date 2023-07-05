@@ -19,7 +19,7 @@
         <img src="img/4.jpg" width="300">
     </div>
 
-    <button type="button" onclick="location.href='quiz01_result.html';">최신정보확인하기</button>
+    <button type="button" onclick="location.href='quiz01_result(선생님).html';">최신정보확인하기</button>
 
 
     <script>
@@ -38,11 +38,13 @@
             if (localStorage.getItem('like') !== null) {
                 arr = JSON.parse(localStorage.getItem('like'));//obj > string 변환 > arr 추가 맞나?
             };
-
-            if (arr.length >= 2) {
+            
+            arr.push(event.target.src);
+            
+            if (arr.length >= 3) {
                 arr.shift();//앞에서 하나 제거
             }
-
+            console.log(arr);
             //로컬 스토리지에 arr을 저장
             localStorage.setItem('like', JSON.stringify(arr));
 
